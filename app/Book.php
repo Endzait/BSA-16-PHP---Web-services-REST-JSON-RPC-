@@ -19,8 +19,7 @@ class Book extends Model
 
     //METHOD FOR DELETING RELATION WITH USER
     public function users(){
-        $this->user_id=0;
-        $this->save();
+        return $this->belongsToMany('App\User');
     }
 
     

@@ -26,7 +26,7 @@
                 <td>{{$book->user_id}}</td>
                 <td width="380">
                     <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/edit')}}">Edit book</a>
-                    <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/pass/user/'.$book->user_id)}}">Pass</a>
+                    <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/pass/user'}}">Pass</a>
                     {!! FORM::open(array('url' => 'book/'.$book->id,'class'=>'pull-right')) !!}
                     {!! FORM::hidden('_method','DELETE') !!}
                     {!! FORM::submit('Delete',array('class'=>'btn btn-warning')) !!}

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Response;
 class RestUserController extends Controller
 {
     //
-    public function showBooks($user_id){
+    public function showBooks($id){
 
         $response = [
             'books'  => []
@@ -21,7 +21,7 @@ class RestUserController extends Controller
             $statusCode = 200;
 
 
-            $books=User::find($user_id)->books();
+            $books=User::find($id)->books();
 
             foreach($books as $book){
 
@@ -72,9 +72,9 @@ class RestUserController extends Controller
 
     public function getBook ($id, $uid){
         try{
-            $book=Book::find($id);
-            $users=User::find($uid);
-            $users->books()->save($book);
+            $book=\App\Book::find($id);
+            $users=\App\User::find($uid);
+            $users->books()->attach($book);
             return Response::json("{}", 200);
         }catch (\Exception $e){
             return Response::json("{}", 404);
@@ -84,7 +84,9 @@ class RestUserController extends Controller
     public function passBook($id,$uid){
 
         try{
-            Book::find($id)->users();
+            $book=\App\Book::find($id);
+            $users=\App\User::find($uid);
+            $users->books()->detach($book);
             return Response::json("{}", 200);
         }catch (\Exception $e){
             return Response::json("{}", 404);

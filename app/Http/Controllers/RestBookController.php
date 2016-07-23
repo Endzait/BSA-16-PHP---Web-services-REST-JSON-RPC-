@@ -82,7 +82,6 @@ class RestBookController extends Controller
                     'title' => $book->title,
                     'year' => $book->year,
                     'genre' => $book->genre,
-                    'user_id' => $book->user_id,
                 ];
             }
 

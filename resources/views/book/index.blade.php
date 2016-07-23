@@ -31,12 +31,11 @@
                         <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/edit')}}">Edit book</a>
 
 
-                                @if($book->user_id==0)
-                                    <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/get')}}">Get book</a>
-                                @endif
-                                @if($book->user_id!=0)
-                                    <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/pass/user/'.$book->user_id)}}">Pass</a>
-                                @endif
+
+                                    <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/get')}}">Get</a>
+
+                                    <a class="btn btn-small btn-info" href="{{URL::to('book/'.$book->id.'/pass/')}}">Pass</a>
+
 
 
                         {!! FORM::open(array('url' => 'book/'.$book->id,'class'=>'pull-right')) !!}

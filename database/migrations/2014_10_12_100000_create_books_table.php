@@ -26,7 +26,7 @@ class CreateBooksTable extends Migration
             $table->string('genre');
             $table->timestamp('updated_at');
             $table->timestamp('created_at');
-            $table->integer('user_id');
+
         });
     }
 

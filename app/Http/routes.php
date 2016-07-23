@@ -26,3 +26,41 @@ Route::group(array('prefix' => 'api'), function()
     Route::get('/user/{uid}/book/{id}/pass','RestUserController@passBook');
 });
 
+/*
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::resource('book','BookController');
+    Route::resource('user','UserController');
+    Route::get('/book/{id}/get','BookController@selectGetUser');
+    Route::get('/book/{id}/pass','BookController@selectPassUser');
+
+
+    Route::get('/book/{id}/get/user/{uid}','BookController@getBook');
+
+    Route::get('/book/{id}/pass/user/{uid}', 'BookController@passBook');
+    Route::get('/user/{id}/books','UserController@showBooks');
+    Route::get('/user/{id}/edit','UserController@edit');
+    Route::get('/new',function (){
+        if (\Illuminate\Support\Facades\Auth::check())
+        {
+            $id = \Illuminate\Support\Facades\Auth::id();
+            return redirect('/user/'.$id);
+        }
+    });
+
+
+
+
+});
+
+
+
+
+Route::get('/auth/github', 'SocialAuthController@redirectToProvider');
+Route::get('/auth/github/callback', 'SocialAuthController@handleProviderCallback');
+
+*/

@@ -98,8 +98,10 @@ class BookController extends Controller
      * @return Redirect
      */
     public function passBook($id,$uid){
-        Book::find($id)->users();
-        return Redirect::to('book/');
+        $book=\App\Book::find($id);
+        $users=\App\User::find($uid);
+        $users->books()->detach($book);
+        return Redirect::to('user/'.$uid);
     }
 
 
@@ -109,12 +111,22 @@ class BookController extends Controller
      *
      * @return Redirect
      */
-    public function selectUser($id){
+    public function selectGetUser($id){
         $book=\App\Book::find($id);
         $users=\App\User::paginate(10);
         return view('book/get',array('book'=>$book, 'users'=>$users));
     }
-
+    /**
+     * @param $id - book id
+     *
+     *
+     * @return Redirect
+     */
+    public function selectPassUser($id){
+        $book=\App\Book::find($id);
+        $users=$book->users()->paginate(10);
+        return view('book/pass',array('book'=>$book, 'users'=>$users));
+    }
 
     /**
      * @param $id - book id
@@ -125,9 +137,9 @@ class BookController extends Controller
     public function getBook ($id, $uid){
         $book=\App\Book::find($id);
         $users=\App\User::find($uid);
-        $users->books()->save($book);
+        $users->books()->attach($book);
         $usbook=$users->books()->paginate(10);
-        return view('book/index', array('books'=>$usbook));
+        return Redirect::to('user/'.$uid);
     }
 
 

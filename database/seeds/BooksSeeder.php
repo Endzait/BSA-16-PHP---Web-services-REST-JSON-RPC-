@@ -17,7 +17,7 @@ class BooksTableSeeder extends Seeder {
                 'author' => substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10),
                 'year' => random_int(1800, 2016),
                 'genre' => substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10),
-                'user_id' => random_int(0, 20),
+
             ]);
         }
 
